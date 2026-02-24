@@ -64,7 +64,6 @@ const content = {
     softSkills: "Soft Skills (Strategic optimization)",
     industryExpertise: "Industry Expertise",
     languages: "Languages",
-    certifications: "Certifications",
     downloadCV: "Download CV (PDF)",
     downloadCVEn: "English",
     downloadCVEs: "Spanish",
@@ -256,15 +255,8 @@ const content = {
       { name: "Spanish", level: "Native" },
       { name: "English", level: "Upper Intermediate (Cambridge FIRST Certificate, Level B2)" },
     ],
-    certificationsList: [
-      "Cambridge FIRST Certificate — Level B2",
-      "Project Management Fundamentals — LinkedIn Learning",
-      "SCRUM: Roles — LinkedIn Learning",
-      "Javascript Essentials — LinkedIn Learning",
-      "Course in Project Management",
-    ],
-  },
-  es: {
+    languagesList: [
+      { name: "Spanish", level: "Native" },
     title: "Ingeniero Industrial",
     profile: "Perfil",
     profileText:
@@ -277,7 +269,6 @@ const content = {
     softSkills: "Habilidades blandas (Optimización estratégica)",
     industryExpertise: "Experiencia sectorial",
     languages: "Idiomas",
-    certifications: "Certificaciones",
     downloadCV: "Descargar CV (PDF)",
     downloadCVEn: "Inglés",
     downloadCVEs: "Español",
@@ -469,17 +460,8 @@ const content = {
       { name: "Español", level: "Nativo" },
       { name: "Inglés", level: "Nivel Avanzado (Upper Intermediate, Certificado FIRST Cambridge B2)" },
     ],
-    certificationsList: [
-      "Certificado FIRST de Cambridge — Nivel B2",
-      "Fundamentos de Gestión de Proyectos — LinkedIn Learning",
-      "SCRUM: Roles — LinkedIn Learning",
-      "Conceptos esenciales de JavaScript — LinkedIn Learning",
-      "Curso de Gestión de Proyectos",
-    ],
-  },
-};
-
-export default function CVPage() {
+    languagesList: [
+      { name: "Español", level: "Nativo" },
   const [lang, setLang] = useState("en");
   const [pdfGenerating, setPdfGenerating] = useState(false);
   const pdfRef = useRef(null);
@@ -497,23 +479,31 @@ export default function CVPage() {
     try {
       element.classList.add("pdf-export");
       const html2pdf = (await import("html2pdf.js")).default;
-      const filename = `Francisco-Castello-CV-${langCode === "en" ? "EN" : "ES"}.pdf`;
-      await html2pdf()
-        .set({
-          margin: 12,
-          filename,
-          image: { type: "jpeg", quality: 0.98 },
-          html2canvas: { scale: 2, useCORS: true, logging: false },
-          jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
-        })
-        .from(element)
-        .save();
+      const filename = `Francisco_Castello_${langCode === "en" ? "EN" : "ES"}.pdf`;
+      const opt = {
+        margin: 12,
+        filename,
+        image: { type: "jpeg", quality: 0.98 },
+        html2canvas: { scale: 2, useCORS: true, logging: false, allowTaint: true },
+        jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
+      };
+      const blob = await html2pdf().set(opt).from(element).outputPdf("blob");
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
     } catch (err) {
       console.error("PDF generation failed:", err);
+      setLang(langCode);
+      setTimeout(() => window.print(), 100);
     } finally {
       element.classList.remove("pdf-export");
+      setPdfGenerating(false);
     }
-    setPdfGenerating(false);
   }
 
   return (
@@ -812,21 +802,6 @@ export default function CVPage() {
             <li key={l.name}>
               <strong>{l.name}</strong> — {l.level}
             </li>
-          ))}
-        </ul>
-      </AnimatedSection>
-
-      {/* Certifications */}
-      <AnimatedSection delayMs={360}>
-        <div className="flex items-center gap-3 mb-3">
-          <AnimeChibi variant="certifications" />
-          <h2 className="text-lg font-semibold uppercase tracking-wider text-[var(--muted)]">
-            {t.certifications}
-          </h2>
-        </div>
-        <ul className="space-y-1 text-[var(--foreground)] text-sm">
-          {t.certificationsList.map((cert, i) => (
-            <li key={i}>{cert}</li>
           ))}
         </ul>
       </AnimatedSection>

@@ -65,12 +65,6 @@ const variants = {
       <path d="M30 10 Q34 10 34 14 L34 18 Q34 20 32 20 L28 20 L26 22 L26 20 L28 20 L32 20 Q34 20 34 18 Z" fill="#0d9488" fillOpacity="0.2" stroke="#0f766e" />
     </ChibiFace>
   ),
-  certifications: (
-    <ChibiFace>
-      <rect x="26" y="6" width="8" height="12" rx="1.5" fill="none" stroke="#0f766e" />
-      <circle cx="30" cy="16" r="0.8" fill="#0f766e" />
-    </ChibiFace>
-  ),
 };
 
 export default function AnimeChibi({ variant = "profile", className = "" }) {
