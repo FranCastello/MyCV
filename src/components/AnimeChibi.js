@@ -42,6 +42,18 @@ const variants = {
       <path d="M26 10 L28 14 L26 18 M30 10 L32 14 L30 18" stroke="#0f766e" />
     </ChibiFace>
   ),
+  coreSkills: (
+    <ChibiFace>
+      <path d="M20 8 L20 4 M16 6 L24 6" strokeWidth="1.2" />
+      <circle cx="20" cy="5" r="1.5" fill="#0d9488" fillOpacity="0.5" />
+    </ChibiFace>
+  ),
+  industryExpertise: (
+    <ChibiFace>
+      <rect x="26" y="7" width="8" height="10" rx="1" fill="none" stroke="#0f766e" />
+      <path d="M28 10 L32 10 M28 13 L30 13" stroke="#0f766e" />
+    </ChibiFace>
+  ),
   softSkills: (
     <ChibiFace>
       <path d="M26 10 Q30 14 26 18" />

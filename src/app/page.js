@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
 import AnimeChibi from "../components/AnimeChibi";
-
 function useInView(options = {}) {
   const ref = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
@@ -60,7 +59,10 @@ const content = {
     workExperience: "Work Experience",
     education: "Education",
     technicalSkills: "Technical Skills",
-    softSkills: "Soft Skills",
+    coreSkills: "Core Skills",
+    technicalPlatform: "Technical & Platform Knowledge",
+    softSkills: "Soft Skills (Strategic optimization)",
+    industryExpertise: "Industry Expertise",
     languages: "Languages",
     certifications: "Certifications",
     downloadCV: "Download CV (PDF)",
@@ -153,13 +155,6 @@ const content = {
         link: null,
       },
       {
-        title: "Diploma in Web Development",
-        period: "2023 – Present",
-        institution: "Academy by Numen",
-        note: null,
-        link: null,
-      },
-      {
         title: "English Upper Intermediate Level",
         period: null,
         institution: "Asociación Argentina de Cultura Inglesa",
@@ -167,37 +162,95 @@ const content = {
         link: null,
       },
     ],
-    technicalSkillsList: [
-      "Microsoft Office",
-      "Google Docs",
-      "Jira",
-      "Trello",
-      "Asana",
-      "Parabol",
-      "Notion",
-      "Figma / Figjam",
-      "SCRUM",
-      "KANBAN",
-      "Web development (basics)",
-      "ChatGPT",
-      "Midjourney",
-      "Slack",
-      "Telegram",
-      "Discord",
-      "WhatsApp",
-      "Instagram",
-      "X",
-      "Facebook",
-      "YouTube",
+    coreSkillsCategories: [
+      {
+        title: "Product Strategy",
+        items: [
+          "Product Discovery",
+          "Product Strategy & Roadmapping",
+          "OKRs & KPI Definition",
+          "Product-Market Fit Validation",
+          "Go-To-Market Strategy",
+          "SaaS Pricing Strategy",
+        ],
+      },
+      {
+        title: "Product Execution",
+        items: [
+          "Agile (Scrum / Kanban)",
+          "Sprint Planning & Backlog Prioritization",
+          "User Stories & PRDs",
+          "Stakeholder Management",
+          "Risk Management",
+        ],
+      },
+      {
+        title: "Product Analytics",
+        items: [
+          "KPI Definition",
+          "Funnel Analysis",
+          "A/B Testing Concepts",
+          "Data-informed Decision Making",
+          "North Star Metric Definition",
+        ],
+      },
     ],
-    softSkillsList: [
-      "Problem solving",
-      "Teamwork",
-      "Logical thinking",
-      "Leadership",
-      "Communication",
-      "Negotiation",
-      "Technical skills",
+    technicalPlatformList: [
+      "API & REST Fundamentals",
+      "UX/UI & Figma Prototyping",
+      "AI Tools for Product (ChatGPT, Cursor, LLM workflows)",
+      "No-code / Low-code Understanding",
+      "Blockchain & Web3 Product Concepts",
+      "DeFi Mechanisms (Liquidity Pools, Token Incentives)",
+      "NFT-based Product Models",
+    ],
+    softSkillsCategories: [
+      {
+        title: "Leadership & Management",
+        items: [
+          "Cross-functional Leadership",
+          "Executive Communication",
+          "Decision-making under uncertainty",
+          "Conflict Resolution",
+          "Negotiation",
+        ],
+      },
+      {
+        title: "Strategic Thinking",
+        items: [
+          "Systems Thinking",
+          "Business-Oriented Mindset",
+          "Outcome-driven mindset",
+          "Prioritization under constraints",
+        ],
+      },
+      {
+        title: "Execution",
+        items: [
+          "Ownership mentality",
+          "Bias for action",
+          "High accountability",
+          "Structured problem solving",
+        ],
+      },
+    ],
+    industryExpertiseCategories: [
+      {
+        title: "HealthTech",
+        items: [
+          "PACS Workflow Understanding",
+          "DICOM Fundamentals",
+          "Medical Imaging Product Design",
+        ],
+      },
+      {
+        title: "HR Tech",
+        items: [
+          "ATS & CRM Platforms",
+          "Talent Acquisition Workflows",
+          "Enterprise HR Systems",
+        ],
+      },
     ],
     languagesList: [
       { name: "Spanish", level: "Native" },
@@ -219,7 +272,10 @@ const content = {
     workExperience: "Experiencia Laboral",
     education: "Educación",
     technicalSkills: "Habilidades Técnicas",
-    softSkills: "Habilidades Blandas",
+    coreSkills: "Core Skills",
+    technicalPlatform: "Conocimiento técnico y de plataformas",
+    softSkills: "Habilidades blandas (Optimización estratégica)",
+    industryExpertise: "Experiencia sectorial",
     languages: "Idiomas",
     certifications: "Certificaciones",
     downloadCV: "Descargar CV (PDF)",
@@ -312,13 +368,6 @@ const content = {
         link: null,
       },
       {
-        title: "Diplomatura en Desarrollo Web Full Stack",
-        period: "2023 – Presente",
-        institution: "Academy by Numen",
-        note: null,
-        link: null,
-      },
-      {
         title: "Nivel de Inglés Avanzado (Upper Intermediate)",
         period: null,
         institution: "Asociación Argentina de Cultura Inglesa",
@@ -326,37 +375,95 @@ const content = {
         link: null,
       },
     ],
-    technicalSkillsList: [
-      "Microsoft Office",
-      "Google Docs",
-      "Jira",
-      "Trello",
-      "Asana",
-      "Parabol",
-      "Notion",
-      "Figma / Figjam",
-      "SCRUM",
-      "KANBAN",
-      "Desarrollo web (nociones)",
-      "ChatGPT",
-      "Midjourney",
-      "Slack",
-      "Telegram",
-      "Discord",
-      "WhatsApp",
-      "Instagram",
-      "X",
-      "Facebook",
-      "YouTube",
+    coreSkillsCategories: [
+      {
+        title: "Estrategia de producto",
+        items: [
+          "Product Discovery",
+          "Estrategia y roadmap de producto",
+          "OKRs y definición de KPIs",
+          "Validación de product-market fit",
+          "Estrategia Go-To-Market",
+          "Estrategia de precios SaaS",
+        ],
+      },
+      {
+        title: "Ejecución de producto",
+        items: [
+          "Agile (Scrum / Kanban)",
+          "Planificación de sprints y priorización del backlog",
+          "User Stories y PRDs",
+          "Gestión de stakeholders",
+          "Gestión de riesgos",
+        ],
+      },
+      {
+        title: "Analítica de producto",
+        items: [
+          "Definición de KPIs",
+          "Análisis de embudo",
+          "Conceptos de A/B testing",
+          "Decisiones basadas en datos",
+          "Definición de North Star Metric",
+        ],
+      },
     ],
-    softSkillsList: [
-      "Resolución de problemas",
-      "Trabajo en equipo",
-      "Pensamiento lógico",
-      "Liderazgo",
-      "Comunicación",
-      "Negociación",
-      "Perfil técnico",
+    technicalPlatformList: [
+      "Fundamentos de API y REST",
+      "UX/UI y prototipado en Figma",
+      "Herramientas de IA para producto (ChatGPT, Cursor, flujos LLM)",
+      "Conocimiento no-code / low-code",
+      "Conceptos de producto Blockchain y Web3",
+      "Mecanismos DeFi (Liquidity Pools, incentivos con tokens)",
+      "Modelos de producto basados en NFT",
+    ],
+    softSkillsCategories: [
+      {
+        title: "Liderazgo y gestión",
+        items: [
+          "Liderazgo cross-functional",
+          "Comunicación ejecutiva",
+          "Toma de decisiones bajo incertidumbre",
+          "Resolución de conflictos",
+          "Negociación",
+        ],
+      },
+      {
+        title: "Pensamiento estratégico",
+        items: [
+          "Pensamiento sistémico",
+          "Mentalidad orientada al negocio",
+          "Mentalidad orientada a resultados",
+          "Priorización bajo restricciones",
+        ],
+      },
+      {
+        title: "Ejecución",
+        items: [
+          "Mentalidad de ownership",
+          "Sesgo por la acción",
+          "Alta responsabilidad",
+          "Resolución estructurada de problemas",
+        ],
+      },
+    ],
+    industryExpertiseCategories: [
+      {
+        title: "HealthTech",
+        items: [
+          "Comprensión de flujos PACS",
+          "Fundamentos DICOM",
+          "Diseño de producto en imagen médica",
+        ],
+      },
+      {
+        title: "HR Tech",
+        items: [
+          "Plataformas ATS y CRM",
+          "Flujos de adquisición de talento",
+          "Sistemas de RRHH empresarial",
+        ],
+      },
     ],
     languagesList: [
       { name: "Español", level: "Nativo" },
@@ -374,12 +481,45 @@ const content = {
 
 export default function CVPage() {
   const [lang, setLang] = useState("en");
+  const [pdfGenerating, setPdfGenerating] = useState(false);
+  const pdfRef = useRef(null);
   const t = content[lang];
+
+  async function handleDownloadPdf(langCode) {
+    setLang(langCode);
+    setPdfGenerating(true);
+    await new Promise((r) => setTimeout(r, 500));
+    const element = pdfRef.current;
+    if (!element) {
+      setPdfGenerating(false);
+      return;
+    }
+    try {
+      element.classList.add("pdf-export");
+      const html2pdf = (await import("html2pdf.js")).default;
+      const filename = `Francisco-Castello-CV-${langCode === "en" ? "EN" : "ES"}.pdf`;
+      await html2pdf()
+        .set({
+          margin: 12,
+          filename,
+          image: { type: "jpeg", quality: 0.98 },
+          html2canvas: { scale: 2, useCORS: true, logging: false },
+          jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
+        })
+        .from(element)
+        .save();
+    } catch (err) {
+      console.error("PDF generation failed:", err);
+    } finally {
+      element.classList.remove("pdf-export");
+    }
+    setPdfGenerating(false);
+  }
 
   return (
     <main className="max-w-3xl mx-auto px-6 py-12 md:py-16">
-      {/* Top bar: language + PDF downloads */}
-      <div className="flex flex-wrap items-center justify-between gap-4 mb-8 pb-4 border-b border-[var(--muted)]/30">
+      {/* Top bar: language + PDF downloads (oculto al imprimir/guardar como PDF) */}
+      <div className="flex flex-wrap items-center justify-between gap-4 mb-8 pb-4 border-b border-[var(--muted)]/30 print:hidden">
         <div className="flex items-center gap-3">
           <span className="text-sm text-[var(--muted)]">{t.lang}:</span>
           <button
@@ -407,23 +547,26 @@ export default function CVPage() {
         </div>
         <div className="flex flex-wrap items-center gap-2">
           <span className="text-sm text-[var(--muted)]">{t.downloadCV}:</span>
-          <a
-            href="/cv-en.pdf"
-            download="Francisco-Castello-CV-EN.pdf"
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-[var(--muted)]/15 text-sm text-[var(--foreground)] hover:bg-[var(--muted)]/25 transition-colors"
+          <button
+            type="button"
+            disabled={pdfGenerating}
+            onClick={() => handleDownloadPdf("en")}
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-[var(--muted)]/15 text-sm text-[var(--foreground)] hover:bg-[var(--muted)]/25 transition-colors disabled:opacity-60"
           >
-            {t.downloadCVEn}
-          </a>
-          <a
-            href="/cv-es.pdf"
-            download="Francisco-Castello-CV-ES.pdf"
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-[var(--muted)]/15 text-sm text-[var(--foreground)] hover:bg-[var(--muted)]/25 transition-colors"
+            {pdfGenerating ? "…" : t.downloadCVEn}
+          </button>
+          <button
+            type="button"
+            disabled={pdfGenerating}
+            onClick={() => handleDownloadPdf("es")}
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-[var(--muted)]/15 text-sm text-[var(--foreground)] hover:bg-[var(--muted)]/25 transition-colors disabled:opacity-60"
           >
-            {t.downloadCVEs}
-          </a>
+            {pdfGenerating ? "…" : t.downloadCVEs}
+          </button>
         </div>
       </div>
 
+      <div ref={pdfRef}>
       {/* Header estilo CV: nombre | foto | nombre + título */}
       <header className="border-b border-[var(--muted)]/30 pb-8 mb-8">
         <div className="flex flex-col items-center">
@@ -531,9 +674,8 @@ export default function CVPage() {
         <ul className="space-y-5">
           {t.educationList.map((item) => (
             <li key={item.title + item.institution}>
-              <div className="flex flex-wrap justify-between gap-2">
+              <div>
                 <h3 className="font-semibold text-[var(--foreground)]">{item.title}</h3>
-                {item.period && <span className="text-sm text-[var(--muted)]">{item.period}</span>}
               </div>
               <p className="text-sm text-[var(--muted)]">{item.institution}</p>
               {item.note && (
@@ -556,16 +698,43 @@ export default function CVPage() {
         </ul>
       </AnimatedSection>
 
-      {/* Technical Skills */}
+      {/* Core Skills */}
       <AnimatedSection className="mb-10" delayMs={180}>
+        <div className="flex items-center gap-3 mb-4">
+          <AnimeChibi variant="coreSkills" />
+          <h2 className="text-lg font-semibold uppercase tracking-wider text-[var(--muted)]">
+            {t.coreSkills}
+          </h2>
+        </div>
+        <div className="space-y-5">
+          {t.coreSkillsCategories.map((cat) => (
+            <div key={cat.title}>
+              <h3 className="text-sm font-semibold text-[var(--foreground)] mb-2">{cat.title}</h3>
+              <ul className="flex flex-wrap gap-2">
+                {cat.items.map((item) => (
+                  <li
+                    key={item}
+                    className="px-3 py-1.5 rounded-md bg-[var(--muted)]/15 text-sm text-[var(--foreground)]"
+                  >
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </AnimatedSection>
+
+      {/* Technical & Platform Knowledge */}
+      <AnimatedSection className="mb-10" delayMs={200}>
         <div className="flex items-center gap-3 mb-4">
           <AnimeChibi variant="technicalSkills" />
           <h2 className="text-lg font-semibold uppercase tracking-wider text-[var(--muted)]">
-            {t.technicalSkills}
+            {t.technicalPlatform}
           </h2>
         </div>
         <ul className="flex flex-wrap gap-2">
-          {t.technicalSkillsList.map((skill) => (
+          {t.technicalPlatformList.map((skill) => (
             <li
               key={skill}
               className="px-3 py-1.5 rounded-md bg-[var(--muted)]/15 text-sm text-[var(--foreground)]"
@@ -577,23 +746,57 @@ export default function CVPage() {
       </AnimatedSection>
 
       {/* Soft Skills */}
-      <AnimatedSection className="mb-10" delayMs={240}>
+      <AnimatedSection className="mb-10" delayMs={220}>
         <div className="flex items-center gap-3 mb-4">
           <AnimeChibi variant="softSkills" />
           <h2 className="text-lg font-semibold uppercase tracking-wider text-[var(--muted)]">
             {t.softSkills}
           </h2>
         </div>
-        <ul className="flex flex-wrap gap-2">
-          {t.softSkillsList.map((skill) => (
-            <li
-              key={skill}
-              className="px-3 py-1.5 rounded-md bg-[var(--muted)]/15 text-sm text-[var(--foreground)]"
-            >
-              {skill}
-            </li>
+        <div className="space-y-5">
+          {t.softSkillsCategories.map((cat) => (
+            <div key={cat.title}>
+              <h3 className="text-sm font-semibold text-[var(--foreground)] mb-2">{cat.title}</h3>
+              <ul className="flex flex-wrap gap-2">
+                {cat.items.map((item) => (
+                  <li
+                    key={item}
+                    className="px-3 py-1.5 rounded-md bg-[var(--muted)]/15 text-sm text-[var(--foreground)]"
+                  >
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
           ))}
-        </ul>
+        </div>
+      </AnimatedSection>
+
+      {/* Industry Expertise */}
+      <AnimatedSection className="mb-10" delayMs={240}>
+        <div className="flex items-center gap-3 mb-4">
+          <AnimeChibi variant="industryExpertise" />
+          <h2 className="text-lg font-semibold uppercase tracking-wider text-[var(--muted)]">
+            {t.industryExpertise}
+          </h2>
+        </div>
+        <div className="space-y-5">
+          {t.industryExpertiseCategories.map((cat) => (
+            <div key={cat.title}>
+              <h3 className="text-sm font-semibold text-[var(--foreground)] mb-2">{cat.title}</h3>
+              <ul className="flex flex-wrap gap-2">
+                {cat.items.map((item) => (
+                  <li
+                    key={item}
+                    className="px-3 py-1.5 rounded-md bg-[var(--muted)]/15 text-sm text-[var(--foreground)]"
+                  >
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
       </AnimatedSection>
 
       {/* Languages */}
@@ -627,6 +830,8 @@ export default function CVPage() {
           ))}
         </ul>
       </AnimatedSection>
+      </div>
+
     </main>
   );
 }

@@ -45,3 +45,17 @@ body {
   opacity: 1;
   transform: translateY(0);
 }
+
+/* Al imprimir / guardar como PDF: secciones visibles y sin animación */
+@media print {
+  .section-reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Al exportar a PDF con html2pdf: forzar todas las secciones visibles */
+.pdf-export .section-reveal {
+  opacity: 1 !important;
+  transform: none !important;
+}
