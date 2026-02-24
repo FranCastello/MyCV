@@ -67,6 +67,7 @@ const content = {
     downloadCV: "Download CV (PDF)",
     downloadCVEn: "English",
     downloadCVEs: "Spanish",
+    printSavePdf: "Print / Save as PDF",
     lang: "Language",
     experience: [
       {
@@ -255,8 +256,8 @@ const content = {
       { name: "Spanish", level: "Native" },
       { name: "English", level: "Upper Intermediate (Cambridge FIRST Certificate, Level B2)" },
     ],
-    languagesList: [
-      { name: "Spanish", level: "Native" },
+  },
+  es: {
     title: "Ingeniero Industrial",
     profile: "Perfil",
     profileText:
@@ -272,6 +273,7 @@ const content = {
     downloadCV: "Descargar CV (PDF)",
     downloadCVEn: "Inglés",
     downloadCVEs: "Español",
+    printSavePdf: "Imprimir / Guardar como PDF",
     lang: "Idioma",
     experience: [
       {
@@ -460,8 +462,10 @@ const content = {
       { name: "Español", level: "Nativo" },
       { name: "Inglés", level: "Nivel Avanzado (Upper Intermediate, Certificado FIRST Cambridge B2)" },
     ],
-    languagesList: [
-      { name: "Español", level: "Nativo" },
+  },
+};
+
+export default function CVPage() {
   const [lang, setLang] = useState("en");
   const [pdfGenerating, setPdfGenerating] = useState(false);
   const pdfRef = useRef(null);
@@ -470,7 +474,7 @@ const content = {
   async function handleDownloadPdf(langCode) {
     setLang(langCode);
     setPdfGenerating(true);
-    await new Promise((r) => setTimeout(r, 500));
+    await new Promise((r) => setTimeout(r, 600));
     const element = pdfRef.current;
     if (!element) {
       setPdfGenerating(false);
@@ -487,23 +491,19 @@ const content = {
         html2canvas: { scale: 2, useCORS: true, logging: false, allowTaint: true },
         jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
       };
-      const blob = await html2pdf().set(opt).from(element).outputPdf("blob");
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = filename;
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(url);
+      await html2pdf().set(opt).from(element).save();
     } catch (err) {
       console.error("PDF generation failed:", err);
-      setLang(langCode);
-      setTimeout(() => window.print(), 100);
+      window.print();
     } finally {
       element.classList.remove("pdf-export");
       setPdfGenerating(false);
     }
+  }
+
+  function handlePrintPdf(langCode) {
+    setLang(langCode);
+    setTimeout(() => window.print(), 500);
   }
 
   return (
@@ -553,6 +553,23 @@ const content = {
           >
             {pdfGenerating ? "…" : t.downloadCVEs}
           </button>
+          <span className="text-xs text-[var(--muted)]">ó</span>
+          <button
+            type="button"
+            onClick={() => handlePrintPdf("en")}
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md border border-[var(--muted)]/40 text-sm text-[var(--foreground)] hover:bg-[var(--muted)]/10 transition-colors"
+            title="Abre el cuadro de impresión; elegí «Guardar como PDF»"
+          >
+            EN (imprimir)
+          </button>
+          <button
+            type="button"
+            onClick={() => handlePrintPdf("es")}
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md border border-[var(--muted)]/40 text-sm text-[var(--foreground)] hover:bg-[var(--muted)]/10 transition-colors"
+            title="Abre el cuadro de impresión; elegí «Guardar como PDF»"
+          >
+            ES (imprimir)
+          </button>
         </div>
       </div>
 
@@ -573,6 +590,7 @@ const content = {
                   fill
                   className="object-cover object-top"
                   priority
+                  unoptimized
                   sizes="96px"
                   style={{ filter: "contrast(1.05) saturate(1.08)" }}
                 />
