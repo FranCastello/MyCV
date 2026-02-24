@@ -14,7 +14,7 @@ CV personal en formato web. Next.js + React + Tailwind CSS.
    npm run dev
    ```
 
-3. Abrir [http://localhost:3000](http://localhost:3000). Para tu foto: agregá `photo.jpg` en la carpeta `public/` (se mostrarán las iniciales "FC" si no hay imagen).
+3. Abrir [http://localhost:3000](http://localhost:3000) y editar el contenido en `src/app/page.js` con tus datos.
 
 ## Build para producción
 

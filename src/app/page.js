@@ -1,6 +1,8 @@
 "use client";
 
+import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
+import AnimeChibi from "../components/AnimeChibi";
 
 function useInView(options = {}) {
   const ref = useRef(null);
@@ -372,7 +374,6 @@ const content = {
 
 export default function CVPage() {
   const [lang, setLang] = useState("en");
-  const [photoError, setPhotoError] = useState(false);
   const t = content[lang];
 
   return (
@@ -423,30 +424,44 @@ export default function CVPage() {
         </div>
       </div>
 
-      {/* Header with photo */}
-      <header className="border-b border-[var(--muted)]/30 pb-8 mb-8 flex flex-col sm:flex-row gap-6 items-start">
-        <div className="shrink-0 w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden bg-[var(--muted)]/20 flex items-center justify-center">
-          {!photoError ? (
-            <img
-              src="/photo.jpg"
-              alt="Francisco Castello"
-              className="w-full h-full object-cover"
-              onError={() => setPhotoError(true)}
-            />
-          ) : (
-            <span className="text-2xl sm:text-3xl font-bold text-[var(--muted)]" aria-hidden>FC</span>
-          )}
+      {/* Header estilo CV: nombre | foto | nombre + título */}
+      <header className="border-b border-[var(--muted)]/30 pb-8 mb-8">
+        <div className="flex flex-col items-center">
+          <div className="flex w-full max-w-2xl items-center justify-between gap-4">
+            <h1 className="text-2xl font-bold tracking-[0.2em] text-[var(--foreground)] sm:text-3xl">
+              FRANCISCO
+            </h1>
+            <div className="relative flex-shrink-0">
+              <div className="absolute -inset-1 rounded-[2rem] bg-gradient-to-b from-teal-400 to-cyan-500 opacity-90" />
+              <div className="relative h-24 w-20 overflow-hidden rounded-[1.75rem] border-2 border-white shadow-lg sm:h-28 sm:w-24">
+                <Image
+                  src="/foto-header.png"
+                  alt="Francisco Castello"
+                  fill
+                  className="object-cover object-top"
+                  priority
+                  sizes="96px"
+                  style={{ filter: "contrast(1.05) saturate(1.08)" }}
+                />
+              </div>
+            </div>
+            <h1 className="text-2xl font-bold tracking-[0.2em] text-[var(--foreground)] sm:text-3xl">
+              CASTELLO
+            </h1>
+          </div>
+          <p className="mt-4 flex items-center gap-2 text-sm font-medium tracking-[0.2em] text-[var(--muted)] sm:text-base">
+            <span className="h-1.5 w-1.5 rounded-full bg-teal-500" />
+            {t.title}
+            <span className="h-1.5 w-1.5 rounded-full bg-teal-500" />
+          </p>
         </div>
-        <div className="min-w-0 flex-1">
-          <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-[var(--foreground)]">
-            Francisco Castello
-          </h1>
-          <p className="text-lg text-[var(--muted)] mt-1">{t.title}</p>
-          <div className="flex flex-wrap gap-x-4 gap-y-1 mt-4 text-sm text-[var(--muted)]">
-            <a href="mailto:franciscojcastello@gmail.com" className="hover:text-[var(--foreground)] transition-colors">
+        <hr className="mx-auto mt-6 max-w-2xl border-[var(--muted)]/30" />
+        <div className="mx-auto mt-6 grid max-w-2xl gap-6 sm:grid-cols-[1fr,2fr] sm:gap-8">
+          <div className="flex flex-col gap-1 text-sm text-[var(--muted)]">
+            <a href="mailto:franciscojcastello@gmail.com" className="hover:text-teal-600 transition-colors">
               franciscojcastello@gmail.com
             </a>
-            <a href="tel:+54-342-4215966" className="hover:text-[var(--foreground)] transition-colors">
+            <a href="tel:+54-342-4215966" className="hover:text-teal-600 transition-colors">
               +54-342-4215966
             </a>
             <span>Tucumán 3148, Santa Fe 3000, Argentina</span>
@@ -454,27 +469,36 @@ export default function CVPage() {
               href="https://www.linkedin.com/in/franciscojaviercastello"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-[var(--foreground)] transition-colors"
+              className="hover:text-teal-600 transition-colors"
             >
               LinkedIn
             </a>
           </div>
+          <p className="border-l-2 border-teal-200 pl-4 text-sm leading-relaxed text-[var(--muted)] sm:pl-6">
+            {t.profileText}
+          </p>
         </div>
       </header>
 
       {/* Profile */}
       <AnimatedSection className="mb-10" delayMs={0}>
-        <h2 className="text-lg font-semibold uppercase tracking-wider text-[var(--muted)] mb-3">
-          {t.profile}
-        </h2>
+        <div className="flex items-center gap-3 mb-3">
+          <AnimeChibi variant="profile" />
+          <h2 className="text-lg font-semibold uppercase tracking-wider text-[var(--muted)]">
+            {t.profile}
+          </h2>
+        </div>
         <p className="text-[var(--foreground)] leading-relaxed">{t.profileText}</p>
       </AnimatedSection>
 
       {/* Work Experience */}
       <AnimatedSection className="mb-10" delayMs={60}>
-        <h2 className="text-lg font-semibold uppercase tracking-wider text-[var(--muted)] mb-4">
-          {t.workExperience}
-        </h2>
+        <div className="flex items-center gap-3 mb-4">
+          <AnimeChibi variant="workExperience" />
+          <h2 className="text-lg font-semibold uppercase tracking-wider text-[var(--muted)]">
+            {t.workExperience}
+          </h2>
+        </div>
         <ul className="space-y-8">
           {t.experience.map((job) => (
             <li key={`${job.company}-${job.period}`}>
@@ -498,9 +522,12 @@ export default function CVPage() {
 
       {/* Education */}
       <AnimatedSection className="mb-10" delayMs={120}>
-        <h2 className="text-lg font-semibold uppercase tracking-wider text-[var(--muted)] mb-4">
-          {t.education}
-        </h2>
+        <div className="flex items-center gap-3 mb-4">
+          <AnimeChibi variant="education" />
+          <h2 className="text-lg font-semibold uppercase tracking-wider text-[var(--muted)]">
+            {t.education}
+          </h2>
+        </div>
         <ul className="space-y-5">
           {t.educationList.map((item) => (
             <li key={item.title + item.institution}>
@@ -531,9 +558,12 @@ export default function CVPage() {
 
       {/* Technical Skills */}
       <AnimatedSection className="mb-10" delayMs={180}>
-        <h2 className="text-lg font-semibold uppercase tracking-wider text-[var(--muted)] mb-4">
-          {t.technicalSkills}
-        </h2>
+        <div className="flex items-center gap-3 mb-4">
+          <AnimeChibi variant="technicalSkills" />
+          <h2 className="text-lg font-semibold uppercase tracking-wider text-[var(--muted)]">
+            {t.technicalSkills}
+          </h2>
+        </div>
         <ul className="flex flex-wrap gap-2">
           {t.technicalSkillsList.map((skill) => (
             <li
@@ -548,9 +578,12 @@ export default function CVPage() {
 
       {/* Soft Skills */}
       <AnimatedSection className="mb-10" delayMs={240}>
-        <h2 className="text-lg font-semibold uppercase tracking-wider text-[var(--muted)] mb-4">
-          {t.softSkills}
-        </h2>
+        <div className="flex items-center gap-3 mb-4">
+          <AnimeChibi variant="softSkills" />
+          <h2 className="text-lg font-semibold uppercase tracking-wider text-[var(--muted)]">
+            {t.softSkills}
+          </h2>
+        </div>
         <ul className="flex flex-wrap gap-2">
           {t.softSkillsList.map((skill) => (
             <li
@@ -565,9 +598,12 @@ export default function CVPage() {
 
       {/* Languages */}
       <AnimatedSection className="mb-10" delayMs={300}>
-        <h2 className="text-lg font-semibold uppercase tracking-wider text-[var(--muted)] mb-3">
-          {t.languages}
-        </h2>
+        <div className="flex items-center gap-3 mb-3">
+          <AnimeChibi variant="languages" />
+          <h2 className="text-lg font-semibold uppercase tracking-wider text-[var(--muted)]">
+            {t.languages}
+          </h2>
+        </div>
         <ul className="space-y-1 text-[var(--foreground)]">
           {t.languagesList.map((l) => (
             <li key={l.name}>
@@ -579,9 +615,12 @@ export default function CVPage() {
 
       {/* Certifications */}
       <AnimatedSection delayMs={360}>
-        <h2 className="text-lg font-semibold uppercase tracking-wider text-[var(--muted)] mb-3">
-          {t.certifications}
-        </h2>
+        <div className="flex items-center gap-3 mb-3">
+          <AnimeChibi variant="certifications" />
+          <h2 className="text-lg font-semibold uppercase tracking-wider text-[var(--muted)]">
+            {t.certifications}
+          </h2>
+        </div>
         <ul className="space-y-1 text-[var(--foreground)] text-sm">
           {t.certificationsList.map((cert, i) => (
             <li key={i}>{cert}</li>
