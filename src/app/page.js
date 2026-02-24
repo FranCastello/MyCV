@@ -67,7 +67,6 @@ const content = {
     downloadCV: "Download CV (PDF)",
     downloadCVEn: "English",
     downloadCVEs: "Spanish",
-    printSavePdf: "Print / Save as PDF",
     lang: "Language",
     experience: [
       {
@@ -76,14 +75,10 @@ const content = {
         company: "Avature",
         description: null,
         bullets: [
-          "Maintain an over-arching view of the interactions between multiple teams to guarantee fluent communication and collaboration.",
-          "Optimize efficiency through the creation, tuning, and formalization of cross-team processes.",
-          "Ensure quality standards and identify opportunities for improvement across our Engineering area.",
-          "Review the tasks engineering teams are in charge of to ensure they fulfill company standards.",
-          "Set and reassess standards and policies.",
-          "Design and automate processes for Engineering.",
-          "Escalate issues and coordinate solutions.",
-          "Receive and reroute queries from various teams.",
+          "Own cross-team visibility and alignment for communication and collaboration.",
+          "Design and formalize cross-team processes to improve efficiency and quality.",
+          "Set and reassess Engineering standards, policies, and process automation.",
+          "Coordinate escalations and route cross-team queries.",
         ],
       },
       {
@@ -91,18 +86,12 @@ const content = {
         period: "2021 – 2023",
         company: "Shone Live (Guru Labs)",
         description:
-          "As a Project & Product Manager at Guru Labs, a part of the web3 ecosystem within Shone Live, I led three pioneering projects in the realm of blockchain technology and decentralization. These projects encompassed a platform for NFT sales during live streams and trivia games, a decentralized exchange for warranty-backed NFT auctions, and a white-label platform aimed at enhancing user acquisition and retention for web3 projects.",
+          "Led three web3 product initiatives: NFT live-stream marketplace, warranty-backed NFT auction DEX, and white-label user acquisition platform.",
         bullets: [
-          "Implementing SCRUM methodology, including organizing and moderating all associated meetings.",
-          "Gathering functional requirements, managing backlogs and sprints.",
-          "Creating, prioritizing, and refining epics, user stories, and development tasks.",
-          "Research and documentation related to product development.",
-          "Creating and maintaining user-oriented product documentation.",
-          "Platform testing, identifying issues, and suggesting improvements in user interfaces and experience.",
-          "Competitive analysis, product research, and features map design.",
-          "Supporting marketing and sales activities, including social media management, content calendar design, research, and AI-driven content creation.",
-          "Reviewing and assessing user interfaces proposed by the design team.",
-          "Contributing to the creation of pitch decks for fundraising.",
+          "Led SCRUM: ceremonies, backlog and sprint management, epics and user stories.",
+          "Owned product discovery, user-facing documentation, and platform UX testing.",
+          "Drove competitive analysis, feature mapping, and UI/UX review with design.",
+          "Supported GTM: social, content calendar, AI-driven content, and pitch decks.",
         ],
       },
       {
@@ -197,7 +186,7 @@ const content = {
     ],
     technicalPlatformList: [
       "API & REST Fundamentals",
-      "UX/UI & Figma Prototyping",
+      "UX/UI Prototyping with vibe code",
       "AI Tools for Product (ChatGPT, Cursor, LLM workflows)",
       "No-code / Low-code Understanding",
       "Blockchain & Web3 Product Concepts",
@@ -251,6 +240,17 @@ const content = {
           "Enterprise HR Systems",
         ],
       },
+      {
+        title: "Web3 / Blockchain Product Experience",
+        items: [
+          "NFT Marketplace & Auction Platforms",
+          "Decentralized Exchange (DEX) Concepts",
+          "Liquidity Pool Mechanics",
+          "Token-based Incentive Systems",
+          "Blockchain-validated Gaming Systems",
+          "Web3 User Acquisition Funnels",
+        ],
+      },
     ],
     languagesList: [
       { name: "Spanish", level: "Native" },
@@ -273,7 +273,6 @@ const content = {
     downloadCV: "Descargar CV (PDF)",
     downloadCVEn: "Inglés",
     downloadCVEs: "Español",
-    printSavePdf: "Imprimir / Guardar como PDF",
     lang: "Idioma",
     experience: [
       {
@@ -282,14 +281,10 @@ const content = {
         company: "Avature",
         description: null,
         bullets: [
-          "Mantener una visión global de las interacciones entre múltiples equipos para garantizar comunicación y colaboración fluidas.",
-          "Optimizar la eficiencia mediante la creación, ajuste y formalización de procesos entre equipos.",
-          "Asegurar estándares de calidad e identificar oportunidades de mejora en el área de Ingeniería.",
-          "Revisar las tareas de los equipos de ingeniería para asegurar el cumplimiento de los estándares de la empresa.",
-          "Establecer y reevaluar estándares y políticas.",
-          "Diseñar y automatizar procesos para Ingeniería.",
-          "Escalar problemas y coordinar soluciones.",
-          "Recibir y redirigir consultas de diversos equipos.",
+          "Visibilidad y alineación entre equipos para comunicación y colaboración.",
+          "Diseño y formalización de procesos cross-team para eficiencia y calidad.",
+          "Definición y revisión de estándares, políticas y automatización en Engineering.",
+          "Coordinación de escalaciones y derivación de consultas entre equipos.",
         ],
       },
       {
@@ -297,18 +292,12 @@ const content = {
         period: "2021 – 2023",
         company: "Shone Live (Guru Labs)",
         description:
-          "Como Project & Product Manager en Guru Labs, parte del ecosistema web3 de Shone Live, lideré tres proyectos pioneros en tecnología blockchain y descentralización: una plataforma de venta de NFT en transmisiones en vivo y juegos de trivia, un exchange descentralizado para subastas con garantías y una plataforma white-label para adquisición y retención de usuarios en proyectos web3.",
+          "Lideré tres iniciativas de producto web3: marketplace NFT en vivo, DEX de subastas NFT con garantía y plataforma white-label de adquisición de usuarios.",
         bullets: [
-          "Implementación de metodología SCRUM, organización y moderación de reuniones asociadas.",
-          "Relevamiento de requisitos funcionales, gestión del backlog y de los sprints.",
-          "Creación, priorización y refinamiento de épicas, historias de usuario y tareas de desarrollo.",
-          "Investigación y documentación relacionada con el desarrollo del producto.",
-          "Creación y mantenimiento de documentación del producto orientada al usuario.",
-          "Testing de la plataforma, identificación de errores y sugerencia de mejoras en interfaces y experiencia de usuario.",
-          "Análisis de la competencia, investigación de producto y diseño de feature maps.",
-          "Apoyo en marketing y ventas: redes sociales, calendarios de contenido, creación de contenido con IA.",
-          "Revisión y evaluación de interfaces propuestas por el equipo de diseño.",
-          "Contribución a la creación del pitch deck para recaudación de inversiones.",
+          "Liderazgo SCRUM: ceremonias, backlog, sprints, épicas e historias de usuario.",
+          "Discovery de producto, documentación orientada al usuario y testing UX de plataforma.",
+          "Análisis competitivo, feature mapping y revisión de UI/UX con diseño.",
+          "Apoyo GTM: redes sociales, calendario de contenido, contenido con IA y pitch decks.",
         ],
       },
       {
@@ -403,7 +392,7 @@ const content = {
     ],
     technicalPlatformList: [
       "Fundamentos de API y REST",
-      "UX/UI y prototipado en Figma",
+      "UX/UI Prototyping with vibe code",
       "Herramientas de IA para producto (ChatGPT, Cursor, flujos LLM)",
       "Conocimiento no-code / low-code",
       "Conceptos de producto Blockchain y Web3",
@@ -457,6 +446,17 @@ const content = {
           "Sistemas de RRHH empresarial",
         ],
       },
+      {
+        title: "Web3 / Blockchain Product Experience",
+        items: [
+          "NFT Marketplace & Auction Platforms",
+          "Decentralized Exchange (DEX) Concepts",
+          "Liquidity Pool Mechanics",
+          "Token-based Incentive Systems",
+          "Blockchain-validated Gaming Systems",
+          "Web3 User Acquisition Funnels",
+        ],
+      },
     ],
     languagesList: [
       { name: "Español", level: "Nativo" },
@@ -499,11 +499,6 @@ export default function CVPage() {
       element.classList.remove("pdf-export");
       setPdfGenerating(false);
     }
-  }
-
-  function handlePrintPdf(langCode) {
-    setLang(langCode);
-    setTimeout(() => window.print(), 500);
   }
 
   return (
@@ -552,23 +547,6 @@ export default function CVPage() {
             className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-[var(--muted)]/15 text-sm text-[var(--foreground)] hover:bg-[var(--muted)]/25 transition-colors disabled:opacity-60"
           >
             {pdfGenerating ? "…" : t.downloadCVEs}
-          </button>
-          <span className="text-xs text-[var(--muted)]">ó</span>
-          <button
-            type="button"
-            onClick={() => handlePrintPdf("en")}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md border border-[var(--muted)]/40 text-sm text-[var(--foreground)] hover:bg-[var(--muted)]/10 transition-colors"
-            title="Abre el cuadro de impresión; elegí «Guardar como PDF»"
-          >
-            EN (imprimir)
-          </button>
-          <button
-            type="button"
-            onClick={() => handlePrintPdf("es")}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md border border-[var(--muted)]/40 text-sm text-[var(--foreground)] hover:bg-[var(--muted)]/10 transition-colors"
-            title="Abre el cuadro de impresión; elegí «Guardar como PDF»"
-          >
-            ES (imprimir)
           </button>
         </div>
       </div>
